@@ -1,0 +1,35 @@
+sudo: required
+language: python
+python:
+- '3.6'
+cache: pip
+install:
+- pip install --upgrade pipenv
+- pipenv install --dev
+script:
+- pylint -f parseable databricks_utils/
+branches:
+  only:
+  - master
+  - /v?\d+\.\d+\.\d+/
+before_deploy:
+  - sed -i "s/version='[0-9]*.[0-9]*.[0-9]*'/version='$TRAVIS_TAG'/" setup.py
+  - sphinx-build -b html ./resources/rst ./docs
+  - python setup.py sdist
+deploy:
+  - provider: pypi
+    skip-cleanup: true
+    user: eterna2
+    password:
+      secure: mqDcEyU4KMK3eURQeR8bKYjT4sFLnwMYibEtR357TlsWZAoPSRi58eWmO1NT7CeFJd8GI8S4zctRzf1KO7xdR1e3bItwnQPsaRoHJ0C0bXGxulkgrRTsgRDrClsAusInaIWi5QAZyTZIUQxzay6zAcoRYAoBG24JVIwO6Tk9OAxNk2aVRLMGZwVfJP0CKAisDzHbereXcJsYfwXvznm9L52DHjP+Em3fbM2SwEqSICUfRxPtFkIiRiiIl6quuGd2BH4/4ohGge+B45xa+XvEBrn5gfbu6XxqsL6tcwG0r4ky2+wlff14vM3ADdaMWsfgTbHouNHj+3NUVAP8EdgTfSOo+Qe1N+rtsM0tMuKPflH1wiRSBztOTmCHQYTnofbYuWbPq4FyRStYNK5+N5AjZzH5n21xKAikHnYn3E7u2Kr+lIeXaIZhFcKu7cU6fgisrP6wuJdyTSwlG1xOBZmZgeWL5G9FT9yzvJEmpCzcmqNMlQn/wBeFWrpLf8OfFIwTnVmf0zwWMSgWcGRiFPTvE47b2+cig9bm4CjTDwgfctYFXPw7CkpXqhMhOcor+L+VN+o6MkhYKM0Q+XEvCNzSAPYxJz+qTF7YLGB/x/tVWDRQ32Fl+FCnPxgNo8vz5oZHkVcghZ22tRIEPa/AsASvVKrnXoh7UnKR3ER4oEjfYFA=
+    on:
+      tags: true
+      distributions: sdist bdist_wheel
+      branch: master
+  - provider: pages
+    local-dir: ./docs
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN
+    keep-history: true
+    on:
+      branch: master

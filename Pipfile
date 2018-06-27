@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pandas = "~=0.23.0"
+ipython = "~=6.0.0"
+pyspark = "~=2.3.0"
+
+[dev-packages]
+pylint = "*"
+pytest = "*"
+mypy = "*"
+pytest-cov = "*"
+sphinx = "*"
+recommonmark = "*"
+sphinx-rtd-theme = "*"
+
+[requires]
+python_version = "3.6"
