@@ -1,0 +1,25 @@
+databricks\_utils.aws.S3Bucket
+==============================
+
+.. currentmodule:: databricks_utils.aws
+
+.. autoclass:: S3Bucket
+
+   
+   
+   
+   
+
+   
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         S3Bucket.allow_spark
+         S3Bucket.local
+         S3Bucket.ls
+         S3Bucket.mount
+         S3Bucket.s3
+         S3Bucket.umount
+   
+   

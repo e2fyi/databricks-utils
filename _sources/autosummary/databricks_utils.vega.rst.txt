@@ -1,0 +1,20 @@
+databricks\_utils.vega
+======================
+
+.. rubric:: Description
+
+.. automodule:: databricks_utils.vega
+
+.. currentmodule:: databricks_utils.vega
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+    :toctree: .
+    
+    vega_embed
+    
+

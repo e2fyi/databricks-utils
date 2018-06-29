@@ -1,0 +1,6 @@
+databricks\_utils.vega.vega\_embed
+==================================
+
+.. currentmodule:: databricks_utils.vega
+
+.. autofunction:: vega_embed

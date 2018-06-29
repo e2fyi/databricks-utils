@@ -1,0 +1,6 @@
+databricks\_utils.displayHTML
+=============================
+
+.. currentmodule:: databricks_utils
+
+.. autofunction:: displayHTML
