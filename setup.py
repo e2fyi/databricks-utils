@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='databricks-utils',
-    version='0.0.1',
+    version='0.0.2',
     url='https://github.com/e2fyi/databricks-utils',
     license='Apache License 2.0',
     author='William Teo',
