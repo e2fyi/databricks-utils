@@ -15,6 +15,7 @@ branches:
 before_deploy:
   - sed -i "s/version='[0-9]*.[0-9]*.[0-9]*'/version='$TRAVIS_TAG'/" setup.py
   - sphinx-build -b html ./resources/rst ./docs
+  - touch ./docs/.nojekyll
   - python setup.py sdist
 deploy:
   - provider: pypi
