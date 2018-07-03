@@ -26,9 +26,14 @@ API documentation can be found at [https://e2fyi.github.io/databricks-utils/](ht
 import json
 from databricks_utils.aws import S3Bucket
 
+# need to attach notebook's dbutils
+# before S3Bucket can be used
+S3Bucket.attach_dbutils(dbutils)
+
+# create an instance of the s3 bucket
 bucket = (S3Bucket("somebucketname", "SOMEACCESSKEY", "SOMESECRETKEY")
-          .allow_spark()
-          .mount("s3/somebucketname"))
+          .allow_spark(sc) # local spark context
+          .mount("somebucketname")) # mount location name (resolves as `/mnt/somebucketname`)
 
 # show list of files/folders in the bucket "resource" folder
 bucket.ls("resource/")
@@ -68,7 +73,7 @@ spec = {
 }
 
 # plot out the vega chart in databricks notebook
-vega_embed(spec=spec, plot=True)
+displayHTML(vega_embed(spec=spec))
 ```
 
 ### Developer

@@ -5,7 +5,6 @@ Basic vega functions to plot vega charts in databricks or jupyter notebooks.
 .. moduleauthor:: eterna2@hotmail.com
 """
 import json
-import databricks_utils
 
 
 DEFAULT_VEGA_OPTS = dict(theme="quartz",
@@ -17,11 +16,11 @@ DEFAULT_VEGA_OPTS = dict(theme="quartz",
 """Default settings for `vega-embed` (See `https://github.com/vega/vega-embed`)."""
 
 
-def vega_embed(spec, plot=True, **kwargs):
+def vega_embed(spec, display=None, **kwargs):
     """
     Display a vega chart. Also return the HTML to display the vega chart.
 
-    :param plot: Set `True` to display vega chart on the notebook.
+    :param display: Callable to render the resultant HTML (e.g. displayHTML).
     :param kwargs:  See `https://github.com/vega/vega-embed` for the vega
                     embed settings.
     """
@@ -51,7 +50,7 @@ def vega_embed(spec, plot=True, **kwargs):
         </body>
     </html>"""
 
-    if plot:
-        databricks_utils.displayHTML(html) # pylint: disable=undefined-variable
+    if callable(display):
+        display(html) # pylint: disable=undefined-variable
 
     return html

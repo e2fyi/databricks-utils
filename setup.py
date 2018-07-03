@@ -21,7 +21,6 @@ setup(
     include_package_data=False,
     install_requires=[
         "pandas~=0.19.0",
-        "pyspark~=2.3.0",
-        "ipython~=6.0.0"
+        "pyspark~=2.3.0"
     ]
 )
