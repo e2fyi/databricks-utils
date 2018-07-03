@@ -236,7 +236,7 @@ S3Bucket can be used.</p>
 
 <dl class="method">
 <dt id="databricks_utils.aws.S3Bucket.mount">
-<code class="descname">mount</code><span class="sig-paren">(</span><em>mount_pt</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.mount" title="Permalink to this definition">¶</a></dt>
+<code class="descname">mount</code><span class="sig-paren">(</span><em>mount_pt</em>, <em>dbutils=None</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.mount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mounts the S3 bucket in dbfs.
 environment variables <cite>AWS_ACCESS_KEY</cite> and <cite>AWS_SECRET_KEY</cite> must be set.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -246,6 +246,7 @@ environment variables <cite>AWS_ACCESS_KEY</cite> and <cite>AWS_SECRET_KEY</cite
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>mount_pt</strong> – Where to mount the S3 bucket in the <cite>dbfs</cite>.</li>
 <li><strong>display</strong> – Callable to display</li>
+<li><strong>dbutils</strong> – <cite>dbutils</cite> module</li>
 </ul>
 </td>
 </tr>
@@ -270,7 +271,7 @@ interpretable by the databricks spark worker.</p>
 
 <dl class="method">
 <dt id="databricks_utils.aws.S3Bucket.umount">
-<code class="descname">umount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.umount" title="Permalink to this definition">¶</a></dt>
+<code class="descname">umount</code><span class="sig-paren">(</span><em>dbutils</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.umount" title="Permalink to this definition">¶</a></dt>
 <dd><p>umount the s3 bucket.</p>
 </dd></dl>
 
