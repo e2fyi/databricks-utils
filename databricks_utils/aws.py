@@ -25,11 +25,6 @@ class S3Bucket(object):
         if dbutils:
             self.dbutils = dbutils
 
-        if self.dbutils is None:
-            raise RuntimeError("Please attach databricks dbutils with " +
-                               "`S3Bucket.attach_dbutils` before creating " +
-                               "any S3Bucket.")
-
     @classmethod
     def attach_dbutils(cls, dbutils):
         """
@@ -55,18 +50,27 @@ class S3Bucket(object):
                                                      self._aws_secret_key)
         return self
 
-    def mount(self, mount_pt):
+    def mount(self, mount_pt, dbutils=None):
         """
         Mounts the S3 bucket in dbfs.
         environment variables `AWS_ACCESS_KEY` and `AWS_SECRET_KEY` must be set.
 
         :param mount_pt: Where to mount the S3 bucket in the `dbfs`.
         :param display: Callable to display
+        :param dbutils: `dbutils` module
         """
         self.mount_at = os.path.join("/mnt", mount_pt)
         bucket_uri = "s3a://{0}:{1}@{2}".format(self._aws_access_key,
                                                 self._aws_encoded_secret_key,
                                                 self.name)
+        if dbutils:
+            self.dbutils = dbutils
+
+        if self.dbutils is None:
+            raise RuntimeError("`dbutils` not provided. Please call " +
+                               "`S3Bucket.attach_dbutils` or provide " +
+                               "`dbutils` in the arguments.")
+
         try:
             self.dbutils.fs.mount(bucket_uri, self.mount_at)
         except Exception as error: # pylint: disable=broad-except
@@ -74,8 +78,17 @@ class S3Bucket(object):
                 raise error
         return self
 
-    def umount(self):
+    def umount(self, dbutils):
         """umount the s3 bucket."""
+
+        if dbutils:
+            self.dbutils = dbutils
+
+        if self.dbutils is None:
+            raise RuntimeError("`dbutils` not provided. Please call " +
+                               "`S3Bucket.attach_dbutils` or provide " +
+                               "`dbutils` in the arguments.")
+
         self.dbutils.fs.unmount(self.mount_at) # pylint: disable=undefined-variable
         return self
 
@@ -94,7 +107,7 @@ class S3Bucket(object):
 
         :param path: relative path to a resource in the s3 bucket.
         """
-        return os.path.join("dbfs:/", self.mount_at[1:], path)
+        return os.path.join("/dbfs", self.mount_at, path)
 
     def ls(self, path="", display=None): # pylint: disable=invalid-name
         """
@@ -104,7 +117,7 @@ class S3Bucket(object):
         :param display: a Callable to render the HTML output. e.g. `displayHTML`
         """
         # pylint: disable=undefined-variable
-        files = self.dbutils.fs.ls(self.local(path))
+        files = self.dbutils.fs.ls(os.path.join("dbfs:/", self.mount_at[1:], path))
         if callable(display):
             frag = ""
             for file in files:
