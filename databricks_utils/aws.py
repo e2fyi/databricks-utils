@@ -107,7 +107,7 @@ class S3Bucket(object):
 
         :param path: relative path to a resource in the s3 bucket.
         """
-        return os.path.join("/dbfs", self.mount_at, path)
+        return os.path.join("/dbfs", self.mount_at[1:], path)
 
     def ls(self, path="", display=None): # pylint: disable=invalid-name
         """

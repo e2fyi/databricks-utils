@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='databricks-utils',
-    version='0.0.6',
+    version='0.0.7',
     url='https://github.com/e2fyi/databricks-utils',
     license='Apache License 2.0',
     author='William Teo',
