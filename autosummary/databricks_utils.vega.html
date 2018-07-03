@@ -161,14 +161,14 @@
 
 <dl class="function">
 <dt id="databricks_utils.vega.vega_embed">
-<code class="descclassname">databricks_utils.vega.</code><code class="descname">vega_embed</code><span class="sig-paren">(</span><em>spec</em>, <em>plot=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.vega.vega_embed" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">databricks_utils.vega.</code><code class="descname">vega_embed</code><span class="sig-paren">(</span><em>spec</em>, <em>display=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.vega.vega_embed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display a vega chart. Also return the HTML to display the vega chart.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>plot</strong> – Set <cite>True</cite> to display vega chart on the notebook.</li>
+<li><strong>display</strong> – Callable to render the resultant HTML (e.g. displayHTML).</li>
 <li><strong>kwargs</strong> – See <cite>https://github.com/vega/vega-embed</cite> for the vega
 embed settings.</li>
 </ul>
@@ -185,7 +185,7 @@ embed settings.</li>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="databricks_utils.vega.vega_embed.html#databricks_utils.vega.vega_embed" title="databricks_utils.vega.vega_embed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vega_embed</span></code></a>(spec[,&nbsp;plot])</td>
+<tr class="row-odd"><td><a class="reference internal" href="databricks_utils.vega.vega_embed.html#databricks_utils.vega.vega_embed" title="databricks_utils.vega.vega_embed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vega_embed</span></code></a>(spec[,&nbsp;display])</td>
 <td>Display a vega chart.</td>
 </tr>
 </tbody>

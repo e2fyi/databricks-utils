@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>databricks_utils.displayHTML &mdash; databricks_utils 0.0.1 documentation</title>
+  <title>databricks_utils.aws.S3Bucket.attach_dbutils &mdash; databricks_utils 0.0.1 documentation</title>
   
 
   
@@ -27,9 +27,7 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="databricks_utils.aws" href="databricks_utils.aws.html" />
-    <link rel="prev" title="databricks_utils" href="databricks_utils.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -78,11 +76,8 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="databricks_utils.html">databricks_utils</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">databricks_utils.displayHTML</a></li>
-</ul>
-</li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="databricks_utils.html">databricks_utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="databricks_utils.aws.html">databricks_utils.aws</a></li>
 <li class="toctree-l1"><a class="reference internal" href="databricks_utils.vega.html">databricks_utils.vega</a></li>
 </ul>
@@ -130,15 +125,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="databricks_utils.html">databricks_utils</a> &raquo;</li>
-        
-      <li>databricks_utils.displayHTML</li>
+      <li>databricks_utils.aws.S3Bucket.attach_dbutils</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/autosummary/databricks_utils.displayHTML.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/autosummary/databricks_utils.aws.S3Bucket.attach_dbutils.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -151,17 +144,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="databricks-utils-displayhtml">
-<h1>databricks_utils.displayHTML<a class="headerlink" href="#databricks-utils-displayhtml" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="databricks_utils.displayHTML">
-<code class="descclassname">databricks_utils.</code><code class="descname">displayHTML</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.displayHTML" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alias for <cite>displayHTML</cite> in databricks notebooks and <cite>display(HTML(…))</cite> in jupyter notebooks.</p>
+  <div class="section" id="databricks-utils-aws-s3bucket-attach-dbutils">
+<h1>databricks_utils.aws.S3Bucket.attach_dbutils<a class="headerlink" href="#databricks-utils-aws-s3bucket-attach-dbutils" title="Permalink to this headline">¶</a></h1>
+<dl class="classmethod">
+<dt id="databricks_utils.aws.S3Bucket.attach_dbutils">
+<em class="property">classmethod </em><code class="descclassname">S3Bucket.</code><code class="descname">attach_dbutils</code><span class="sig-paren">(</span><em>dbutils</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.attach_dbutils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach databricks <cite>dbutils</cite> to S3Bucket. You MUST attach this before
+S3Bucket can be used.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> – HTML string to be rendered.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dbutils</strong> – databricks <cite>dbutils</cite> (<a class="reference external" href="https://docs.databricks.com/user-guide/dev-tools/dbutils.html#dbutils">https://docs.databricks.com/user-guide/dev-tools/dbutils.html#dbutils</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -174,15 +168,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="databricks_utils.aws.html" class="btn btn-neutral float-right" title="databricks_utils.aws" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="databricks_utils.html" class="btn btn-neutral" title="databricks_utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

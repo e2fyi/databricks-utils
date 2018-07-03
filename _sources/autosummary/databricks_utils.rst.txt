@@ -9,12 +9,3 @@ databricks\_utils
 
 
 
-
-.. rubric:: Functions
-
-.. autosummary::
-    :toctree: .
-    
-    displayHTML
-    
-

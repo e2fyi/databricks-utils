@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="databricks_utils.aws.S3Bucket" href="databricks_utils.aws.S3Bucket.html" />
-    <link rel="prev" title="databricks_utils.displayHTML" href="databricks_utils.displayHTML.html" /> 
+    <link rel="prev" title="databricks_utils" href="databricks_utils.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -155,10 +155,9 @@
 <span class="target" id="module-databricks_utils.aws"></span><p>Utility classes to interface with AWS for databricks notebooks.</p>
 <dl class="class">
 <dt id="databricks_utils.aws.S3Bucket">
-<em class="property">class </em><code class="descclassname">databricks_utils.aws.</code><code class="descname">S3Bucket</code><span class="sig-paren">(</span><em>bucketname</em>, <em>aws_access_key</em>, <em>aws_secret_key</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">databricks_utils.aws.</code><code class="descname">S3Bucket</code><span class="sig-paren">(</span><em>bucketname</em>, <em>aws_access_key</em>, <em>aws_secret_key</em>, <em>dbutils=None</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class to wrap around a S3 bucket and mount at databricks fs.
-This class is only usable for databricks notebooks.</p>
+<p>Class to wrap around a S3 bucket and mount at databricks fs.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -167,6 +166,7 @@ This class is only usable for databricks notebooks.</p>
 <li><strong>bucketname</strong> – name of the S3 bucket</li>
 <li><strong>aws_access_key</strong> – AWS access key</li>
 <li><strong>aws_secret_key</strong> – AWS secret key</li>
+<li><strong>dbutils</strong> – databricks <cite>dbutils</cite> (not needed if <cite>S3Bucket.attach_dbutils</cite> has been called)</li>
 </ul>
 </td>
 </tr>
@@ -174,9 +174,32 @@ This class is only usable for databricks notebooks.</p>
 </table>
 <dl class="method">
 <dt id="databricks_utils.aws.S3Bucket.allow_spark">
-<code class="descname">allow_spark</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.allow_spark" title="Permalink to this definition">¶</a></dt>
+<code class="descname">allow_spark</code><span class="sig-paren">(</span><em>spark_context</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.allow_spark" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update spark context hadoop config with AWS access information so that
 databricks spark can access the S3 bucket.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>spark_context</strong> – databricks spark context</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="databricks_utils.aws.S3Bucket.attach_dbutils">
+<em class="property">classmethod </em><code class="descname">attach_dbutils</code><span class="sig-paren">(</span><em>dbutils</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.attach_dbutils" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attach databricks <cite>dbutils</cite> to S3Bucket. You MUST attach this before
+S3Bucket can be used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dbutils</strong> – databricks <cite>dbutils</cite> (<a class="reference external" href="https://docs.databricks.com/user-guide/dev-tools/dbutils.html#dbutils">https://docs.databricks.com/user-guide/dev-tools/dbutils.html#dbutils</a>)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -195,13 +218,17 @@ databricks spark can access the S3 bucket.</p>
 
 <dl class="method">
 <dt id="databricks_utils.aws.S3Bucket.ls">
-<code class="descname">ls</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.ls" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ls</code><span class="sig-paren">(</span><em>path=''</em>, <em>display=None</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.ls" title="Permalink to this definition">¶</a></dt>
 <dd><p>List the files and folders in s3 bucket mounted in <cite>dbfs</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – path relative to the s3 bucket</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> – path relative to the s3 bucket</li>
+<li><strong>display</strong> – a Callable to render the HTML output. e.g. <cite>displayHTML</cite></li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
@@ -216,7 +243,11 @@ environment variables <cite>AWS_ACCESS_KEY</cite> and <cite>AWS_SECRET_KEY</cite
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mount_pt</strong> – Where to mount the S3 bucket in the <cite>dbfs</cite>.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mount_pt</strong> – Where to mount the S3 bucket in the <cite>dbfs</cite>.</li>
+<li><strong>display</strong> – Callable to display</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
@@ -252,7 +283,7 @@ interpretable by the databricks spark worker.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="databricks_utils.aws.S3Bucket.html#databricks_utils.aws.S3Bucket" title="databricks_utils.aws.S3Bucket"><code class="xref py py-obj docutils literal notranslate"><span class="pre">S3Bucket</span></code></a>(bucketname,&nbsp;aws_access_key,&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="databricks_utils.aws.S3Bucket.html#databricks_utils.aws.S3Bucket" title="databricks_utils.aws.S3Bucket"><code class="xref py py-obj docutils literal notranslate"><span class="pre">S3Bucket</span></code></a>(bucketname,&nbsp;aws_access_key,&nbsp;…[,&nbsp;…])</td>
 <td>Class to wrap around a S3 bucket and mount at databricks fs.</td>
 </tr>
 </tbody>
@@ -270,7 +301,7 @@ interpretable by the databricks spark worker.</p>
         <a href="databricks_utils.aws.S3Bucket.html" class="btn btn-neutral float-right" title="databricks_utils.aws.S3Bucket" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="databricks_utils.displayHTML.html" class="btn btn-neutral" title="databricks_utils.displayHTML" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="databricks_utils.html" class="btn btn-neutral" title="databricks_utils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

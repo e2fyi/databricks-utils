@@ -1,0 +1,6 @@
+databricks\_utils.aws.S3Bucket.attach\_dbutils
+==============================================
+
+.. currentmodule:: databricks_utils.aws
+
+.. automethod:: S3Bucket.attach_dbutils

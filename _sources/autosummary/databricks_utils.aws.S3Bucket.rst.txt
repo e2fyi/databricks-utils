@@ -8,6 +8,12 @@ databricks\_utils.aws.S3Bucket
    
    
    
+   .. HACK -- the point here is that we don't want this to appear in the output, but the autosummary should still generate the pages.
+      .. autosummary::
+         :toctree:
+      
+         S3Bucket.dbutils
+   
    
 
    
@@ -16,6 +22,7 @@ databricks\_utils.aws.S3Bucket
          :toctree:
       
          S3Bucket.allow_spark
+         S3Bucket.attach_dbutils
          S3Bucket.local
          S3Bucket.ls
          S3Bucket.mount

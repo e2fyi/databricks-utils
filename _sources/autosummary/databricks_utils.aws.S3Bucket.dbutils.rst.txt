@@ -1,0 +1,6 @@
+databricks\_utils.aws.S3Bucket.dbutils
+======================================
+
+.. currentmodule:: databricks_utils.aws
+
+.. autoattribute:: S3Bucket.dbutils

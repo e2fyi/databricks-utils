@@ -148,13 +148,17 @@
 <h1>databricks_utils.aws.S3Bucket.ls<a class="headerlink" href="#databricks-utils-aws-s3bucket-ls" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="databricks_utils.aws.S3Bucket.ls">
-<code class="descclassname">S3Bucket.</code><code class="descname">ls</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.ls" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">S3Bucket.</code><code class="descname">ls</code><span class="sig-paren">(</span><em>path=''</em>, <em>display=None</em><span class="sig-paren">)</span><a class="headerlink" href="#databricks_utils.aws.S3Bucket.ls" title="Permalink to this definition">¶</a></dt>
 <dd><p>List the files and folders in s3 bucket mounted in <cite>dbfs</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – path relative to the s3 bucket</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> – path relative to the s3 bucket</li>
+<li><strong>display</strong> – a Callable to render the HTML output. e.g. <cite>displayHTML</cite></li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
