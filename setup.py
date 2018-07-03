@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='databricks-utils',
-    version='0.0.5',
+    version='0.0.6',
     url='https://github.com/e2fyi/databricks-utils',
     license='Apache License 2.0',
     author='William Teo',
@@ -19,8 +19,5 @@ setup(
     packages=find_packages(include=['databricks_utils*'],
                            exclude=["notebooks*", "docs*", "*.sh"]),
     include_package_data=False,
-    install_requires=[
-        "pandas~=0.19.0",
-        "pyspark~=2.3.0"
-    ]
+    install_requires=[]
 )

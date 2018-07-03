@@ -4,9 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pandas = "~=0.23.0"
-ipython = "~=6.0.0"
-pyspark = "~=2.3.0"
 
 [dev-packages]
 pylint = "*"
